@@ -1,15 +1,30 @@
-//Countries names to guess
-let countries = [  
-     "BRUNEI",
-     "Cambodia",
-     "INDONESIA",
-     "LAOS",
-     "MALAYSIA",
-     "MYANMAR",
-     "PHILIPPINES",
-     "SINGAPORE",
-     "THAILAND",
-     "VIETNAM"]
+//words names to guess
+let words = [  
+     "VOLCANO",
+     "GAME",
+     "PLANE",
+     "KEY",
+     "RAINBOW",
+     "SLEEP",
+     "BIOLOGY",
+     "PINEAPPLE",
+     "LOBSTER",
+     "BOOK",
+    ];
+
+//Hints for answers
+let hints = [
+    "smoke - ash - mountain",
+    "fun - play - people",
+    "fly - airport - travel",
+    "door - lock - open",
+    "color - sun - rain",
+    "bed - night - tired",
+    "subject - school - living",
+    "fruit - sweet - yellow",
+    "ocean - shell - tail",
+    "words - pages - spine",
+]
 
 //UI keyboard show with split and array map method
 let keyboard = document.getElementById("keyboard");
@@ -33,7 +48,7 @@ function updateChance() {
 let answer = [];
 //Generate Answer
 function generate_answer() {
-    answer = countries[Math.floor(Math.random()*10)];
+    answer = words[Math.floor(Math.random()*10)];
     console.log(answer);
 }
 
@@ -45,6 +60,7 @@ let wordStatus = null ;
 function show_answerField() {
     wordStatus = answer.split("").map((letter) => (guessed_answer.indexOf(letter) >= 0 ? letter : " _ ")).join("");
     document.getElementById("answer_field").innerHTML = wordStatus;
+    showHint();
 }
 
 //Check Answer 
@@ -117,6 +133,12 @@ function restart() {
     keyboardDiv();
 }
 
+//Show Hint user
+function showHint() {
+    let hint = hints[words.indexOf(answer)];
+    console.log(hint);
+    document.getElementById("hint").innerHTML = hint;
+}
 
 //For image update
 let picStatus = 0 ;
